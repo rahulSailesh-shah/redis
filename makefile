@@ -5,7 +5,7 @@ BINARY = redis-server-go
 all: build
 
 build: main.go resp.go
-	go build -o $(BINARY) main.go resp.go
+	go build -o $(BINARY) main.go resp.go store.go
 
 run: build
 	./$(BINARY)
