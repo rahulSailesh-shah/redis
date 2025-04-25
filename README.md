@@ -32,8 +32,8 @@ A minimalist, in-memory Redis-compatible server written in Go. It implements the
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/simple-redis-go.git
-   cd simple-redis-go
+   git clone https://github.com/rahulSailesh-shah/redis.git
+   cd redis
    ```
 
 2. **Build**
