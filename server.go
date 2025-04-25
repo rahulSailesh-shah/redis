@@ -19,11 +19,12 @@ func NewServer(addr string, store *Store) *Server {
 	return &Server{
 		addr: addr,
 		handlers: map[string]HandlerFunc{
-			"PING": store.ping,
-			"SET":  store.set,
-			"GET":  store.get,
-			"HSET": store.hset,
-			"HGET": store.hget,
+			"PING":    store.ping,
+			"SET":     store.set,
+			"GET":     store.get,
+			"HSET":    store.hset,
+			"HGET":    store.hget,
+			"HGETALL": store.hgetall,
 		},
 	}
 }
@@ -68,7 +69,7 @@ func (s *Server) handleClient(conn net.Conn) {
 		if err != nil {
 			log.Printf("bad request: %v", err)
 			writer.Write(Value{typ: "error", str: fmt.Sprintf("ERR %v", err)})
-			continue
+			return
 		}
 
 		handler, ok := s.handlers[cmd]
